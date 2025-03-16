@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBars, FaTimes, FaWhatsapp } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { Roboto } from "next/font/google";
 import BackgroundAnimation from './BackgroundAnimation';
 
