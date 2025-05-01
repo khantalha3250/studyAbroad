@@ -6,7 +6,6 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Roboto } from "next/font/google";
 import BackgroundAnimation from './BackgroundAnimation';
 
-// Configure Roboto font
 const roboto = Roboto({
   subsets: ["latin"],
   weight: "400",
@@ -17,20 +16,12 @@ export default function Header() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setIsHeaderVisible(false); // Hide header on scroll down
-      } else {
-        setIsHeaderVisible(true); // Show header on scroll up
-      }
-
+      setIsHeaderVisible(currentScrollY <= 50 || currentScrollY < lastScrollY);
       setLastScrollY(currentScrollY);
     };
 
@@ -40,115 +31,81 @@ export default function Header() {
 
   return (
     <header
-      className={`bg-lightGray shadow-lg py-4 px-4 lg:px-10 fixed top-0 w-full z-50 transition-transform duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
         isHeaderVisible ? "translate-y-0" : "-translate-y-full"
       } ${roboto.className}`}
     >
       <BackgroundAnimation />
-      <div className="relative z-10 flex justify-between items-center max-w-7xl mx-auto flex-wrap">
-        {/* Logo and Title */}
-        <div className="flex items-center space-x-3">
-          <div className="relative w-30 sm:w-30">
-            <Image
-              src="/logo.svg"
-              alt="logo.svg"
-              width={80}
-              height={80}
-              className="object-contain"
-              priority
-            />
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto px-4 lg:px-10 py-4">
+          <div className="flex justify-between items-center">
+            {/* Logo Section */}
+            <div className="flex items-center space-x-3">
+              <div className="relative w-20">
+                <Image
+                  src="/logo.svg"
+                  alt="Ninja Abroad"
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <h1 className="text-2xl font-bold text-slate-800 drop-shadow-sm">
+                Ninja Abroad
+              </h1>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                Home
+              </Link>
+              <Link href="/about" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                About
+              </Link>
+              <Link href="/classes" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                MasterClasses
+              </Link>
+              <Link href="/programs" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                Programs
+              </Link>
+              <Link href="/contact" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                Contact
+              </Link>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={toggleMenu}
+              className="md:hidden text-slate-700 hover:text-blue-600 transition-colors"
+            >
+              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
           </div>
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white flex items-center">
-            Ninja Abroad
-          </h1>
         </div>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex space-x-6 lg:space-x-8 text-white">
-          <Link href="/" passHref>
-            <span className="hover:text-lightBlue text-sm sm:text-base lg:text-lg font-bold transition duration-300 ease-in-out">
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white/95 backdrop-blur-sm px-4 py-6 space-y-4 shadow-lg">
+            <Link href="/" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
               Home
-            </span>
-          </Link>
-          <Link href="/about" passHref>
-            <span className="hover:text-lightBlue text-sm sm:text-base lg:text-lg font-bold transition duration-300 ease-in-out">
-              About us
-            </span>
-          </Link>
-          <Link href="/classes" passHref>
-            <span className="hover:text-lightBlue text-sm sm:text-base lg:text-lg font-bold transition duration-300 ease-in-out">
+            </Link>
+            <Link href="/about" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
+              About
+            </Link>
+            <Link href="/classes" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
               MasterClasses
-            </span>
-          </Link>
-          <Link href="/programs" passHref>
-            <span className="hover:text-lightBlue text-sm sm:text-base lg:text-lg font-bold transition duration-300 ease-in-out">
+            </Link>
+            <Link href="/programs" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
               Programs
-            </span>
-          </Link>
-          <Link href="/contact" passHref>
-            <span className="hover:text-lightBlue text-sm sm:text-base lg:text-lg font-bold transition duration-300 ease-in-out">
-              Contact us
-            </span>
-          </Link>
-        </nav>
-
-        {/* Call-to-Action Button (Desktop) */}
-
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-white focus:outline-none"
-        >
-          {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-        </button>
+            </Link>
+            <Link href="/contact" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
+              Contact
+            </Link>
+          </div>
+        )}
       </div>
-
-      {/* Mobile Navigation Links */}
-      {isMenuOpen && (
-        <div className="md:hidden flex flex-col items-center space-y-4 bg-lightGray p-4 shadow-md transition-transform duration-300 ease-in-out">
-          <Link href="/" passHref>
-            <span
-              onClick={toggleMenu}
-              className="text-white hover:text-lightBlue text-base font-bold transition duration-300"
-            >
-              Home
-            </span>
-          </Link>
-          <Link href="/about" passHref>
-            <span
-              onClick={toggleMenu}
-              className="text-white hover:text-lightBlue text-base font-bold transition duration-300"
-            >
-              About us
-            </span>
-          </Link>
-          <Link href="/classes" passHref>
-            <span
-              onClick={toggleMenu}
-              className="text-white hover:text-lightBlue text-base font-bold transition duration-300"
-            >
-              MasterClasses
-            </span>
-          </Link>
-          <Link href="/programs" passHref>
-            <span
-              onClick={toggleMenu}
-              className="text-white hover:text-lightBlue text-base font-bold transition duration-300"
-            >
-              Programs
-            </span>
-          </Link>
-          <Link href="/contact" passHref>
-            <span
-              onClick={toggleMenu}
-              className="text-white hover:text-lightBlue text-base font-bold transition duration-300"
-            >
-              Contact us
-            </span>
-          </Link>
-        </div>
-      )}
     </header>
   );
-} 
+}
