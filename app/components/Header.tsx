@@ -52,7 +52,7 @@ export default function Header() {
                 />
               </div>
               <h1 className="text-2xl font-bold text-slate-800 drop-shadow-sm">
-                Ninja Abroad
+                Study Abroad
               </h1>
             </div>
 
@@ -61,16 +61,16 @@ export default function Header() {
               <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
                 Home
               </Link>
-              <Link href="/about" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+              <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
                 About
               </Link>
-              <Link href="/classes" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                MasterClasses
+              <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                Country
               </Link>
-              <Link href="/programs" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                Programs
+              <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+                Courses
               </Link>
-              <Link href="/contact" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
+              <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200">
                 Contact
               </Link>
             </nav>
@@ -95,10 +95,10 @@ export default function Header() {
               About
             </Link>
             <Link href="/classes" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
-              MasterClasses
+              Country
             </Link>
-            <Link href="/programs" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
-              Programs
+            <Link href="/Courses" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
+              Courses
             </Link>
             <Link href="/contact" className="block text-slate-700 hover:text-blue-600 font-medium" onClick={toggleMenu}>
               Contact

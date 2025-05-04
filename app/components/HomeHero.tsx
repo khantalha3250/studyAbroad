@@ -12,7 +12,7 @@ const HeroSection = () => {
       {/* Content Container */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         {/* Headline */}
-        <h1 className="animate-fade-in-up text-4xl md:text-6xl font-bold text-[#f8f8fa] mb-6 max-w-4xl leading-tight drop-shadow-xl">
+        <h1 className="animate-fade-in-up text-4xl md:text-6xl font-bold text-[#333] mb-6 max-w-4xl leading-tight drop-shadow-xl">
           Guaranteed Success in Your Settle Abroad Goal
         </h1>
 
@@ -23,7 +23,7 @@ const HeroSection = () => {
 
         {/* CTA Button */}
         <button
-          className="animate-fade-in-up bg-[#1378d1] text-[#f8f8fa] px-8 py-4 rounded-full text-lg font-medium hover:brightness-110 transition-all duration-300 opacity-0 animation-delay-500 shadow-lg hover:shadow-xl relative overflow-hidden group"
+          className="animate-fade-in-up bg-[#1378d1] text-[#333] px-8 py-4 rounded-full text-lg font-medium hover:brightness-110 transition-all duration-300 opacity-0 animation-delay-500 shadow-lg hover:shadow-xl relative overflow-hidden group"
           aria-label="Get started with your study abroad journey"
         >
           <span className="relative z-10">Get Started</span>

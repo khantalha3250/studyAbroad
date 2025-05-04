@@ -19,7 +19,7 @@ const KeyHighlights = () => {
 
       {/* Content Container */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <h2 className="animate-fade-in-up text-3xl md:text-5xl font-bold text-[#f8f8fa] mb-6 leading-tight drop-shadow-xl">
+        <h2 className="animate-fade-in-up text-3xl md:text-5xl font-bold text-[#333] mb-6 leading-tight drop-shadow-xl">
           We Have Helped Thousands Fly Abroad
         </h2>
 
@@ -31,7 +31,7 @@ const KeyHighlights = () => {
               className="animate-fade-in-up bg-[#1378d1]/10 p-6 rounded-xl border border-[#1378d1]/30 shadow-md text-center transition-all duration-300 hover:scale-105"
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              <h3 className="text-4xl font-bold text-[#f8f8fa]">{item.value}</h3>
+              <h3 className="text-4xl font-bold text-[#333]">{item.value}</h3>
               <p className="text-lg text-[#9b9b9b] mt-2">{item.label}</p>
             </div>
           ))}
